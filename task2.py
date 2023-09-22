@@ -48,6 +48,8 @@ def run_iteration(matrix):
 def get_nth_iteration(matrix, n=1):
     for it in range(n):
         matrix = run_iteration(matrix)
+        print(it)
+        print(matrix)
 
     return matrix
 
@@ -57,10 +59,6 @@ class Matrix:
 
     def next(self):
         self.matrix = run_iteration(self.matrix)
-
-# m = generate_matrix(size)
-# print(m)
-# n_m = run_iterations(m, 4)
 
 state = np.array([[1, 0, 0, 0, 0, 0, 0],
                   [0, 0, 1, 0, 0, 1, 1],
@@ -77,11 +75,11 @@ print(seventh_it)
 
 
 print("Generate custom matrix:")
-in_str = input("Enter width and height separated by space").split()
-size = tuple(map(int, in_str))
+w = int(input("Enter generated matrix width"))
+h = int(input("Enter generated matrix height"))
 
 def generate_matrix(size):
-    return np.random.randint(2, size=size)
+    return np.random.randint(2, size=(w, h))
 
 def run_infinitely(matrix):
     while True:
@@ -93,9 +91,9 @@ def run_infinitely(matrix):
         else:
             matrix = new_matrix
 
-print("Animate each iteration:")
+print("Animate played in popup:")
 
-m_obj = Matrix(generate_matrix(size))
+m_obj = Matrix(generate_matrix((w, h)))
 
 fig, ax = plt.subplots()
 
@@ -107,5 +105,5 @@ def plot_matrix(i):
         ax.set_axis_off()
 
 # In Pycharm pls enable to show plots in a popup window
-anim = FuncAnimation(fig, plot_matrix, interval=1_000, save_count=1_000)
+anim = FuncAnimation(fig, plot_matrix, interval=500, save_count=250)
 plt.show()
