@@ -45,10 +45,10 @@ def run_iteration(matrix):
 
     return new_matrix
 
-def get_nth_iteration(matrix, n=1):
+def print_n_iterations(matrix, n=1):
     for it in range(n):
         matrix = run_iteration(matrix)
-        print(it)
+        print("\n{} iteration".format(it + 1))
         print(matrix)
 
     return matrix
@@ -69,14 +69,12 @@ state = np.array([[1, 0, 0, 0, 0, 0, 0],
                   [1, 1, 0, 1, 1, 0, 1]])
 print("Initial state:")
 print(state)
-seventh_it = get_nth_iteration(state, 7)
-print("7th iteration:")
-print(seventh_it)
+seventh_it = print_n_iterations(state, 7)
 
 
-print("Generate custom matrix:")
-w = int(input("Enter generated matrix width"))
-h = int(input("Enter generated matrix height"))
+print("\nTry the algorithm on a random matrix:")
+w = int(input("Enter matrix width:"))
+h = int(input("Enter matrix height:"))
 
 def generate_matrix(size):
     return np.random.randint(2, size=(w, h))
@@ -91,7 +89,7 @@ def run_infinitely(matrix):
         else:
             matrix = new_matrix
 
-print("Animate played in popup:")
+print("Animation played in popup (please, exit fullscreen mode)")
 
 m_obj = Matrix(generate_matrix((w, h)))
 
