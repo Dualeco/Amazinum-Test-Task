@@ -1,7 +1,7 @@
 import numpy as np
 prob = np.array([0.1, 0.2, 0.4, 0.8, 0.9])
 
-# One coin of 5 is selected randomly. Find a probability of n Heads in row after each try:
+# One coin out of 5 is selected randomly. Find a probability of each time Heads fall in row:
 
 # 1st way of thinking:
 # P(H / before 1st experiment) = 0.48 (avg of each probability)
